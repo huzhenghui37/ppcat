@@ -1,0 +1,21 @@
+{% extends "base.django.html" %}
+
+{% block head_title %}User Login{% endblock %}
+
+{% block body_account%}
+{% endblock %}
+
+{% block body_content %}
+
+<h1>Please Login</h1>
+
+<div id='ing_form'>
+    <form action='.' method='post'>
+        Username: <input type='text' class='inputtext' name='username' size='12' maxlength='16' /> 
+        Password: <input type='password' class='inputtext' name='password' size='8' maxlength='16' />
+        <input type='submit' class='button' value='Login' />
+        <input type='hidden' name='next' value='{{ next }}' />
+    </form>
+</div>
+
+{% endblock %}

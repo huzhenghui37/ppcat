@@ -1,0 +1,28 @@
+{% extends "base.django.html" %}
+{% block head_title %}Album Add{% endblock %}
+
+{% block body_content %}
+<div id='album_title'>
+	<h1>Album Add</h1>
+</div>
+
+<div id='album_add'>
+	<form id='albumform' method='post' action='{% url album-add-save %}' />
+		<table border='0'>
+			{% for f in form %}
+			<tr><td class='align_right'>{{ f.label_tag }}</td>
+				<td>{{ f }} {% if f.errors %} {{ f.errors }} {% endif %}</td>
+				<td></td>
+			</tr>
+			{% endfor %}
+			
+			<tr><td></td>
+				<td><input type='submit' class='button' name='Add' value='Add' />
+					<input type='submit' class='button' name='cancel' value='Cancel'/>
+				</td>
+			</tr>
+		</table>
+	</form>
+</div>
+
+{% endblock %}

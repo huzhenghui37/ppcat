@@ -1,0 +1,109 @@
+{% extends "base.django.html" %}
+
+{% block head_title %}
+	ppCat.Shell Photo
+{% endblock %}
+
+{% block body_content %}
+<div id='photo'>
+	<table border='0'>
+		<tr><td><img id='photo' src='{{ photo.get_image_url }}'/></td></tr>
+		<tr><td><h1 id='photo_caption'>{{ photo.caption }}</h1><p id='photo_description'>{{ photo.description }}</p></td></tr>
+	</table>
+	{% if user.is_authenticated %}
+		<a href='{% url photo-edit photo.id %}'>Edit</a>
+		<a href='{% url photo-delete photo.id %}'>Delete</a>
+	{% endif %}
+</div>
+
+<div id='photo_album'>
+	<a href='{{ photo.album.get_absolute_url }}'><p id='album_title'>{{ photo.album.title }}</a> <span class='small'>Album created {{ photo.album.date_create|timesince }} ago.</span></p>
+	<p id='album_description'>{{ photo.album.description }}</p>
+	<div id='album_thumbnail'>
+		{% for p in photo.album.photos.all %}
+			{% ifnotequal p.id photo.id %}
+				<a class='thumbnail' href='{{ p.get_absolute_url }}'><img class='thumbnail' src='{{ p.get_image_thumbnail_url }}'/></a> 
+			{% else %}
+				<img class='currentphoto' src='{{ p.get_image_thumbnail_url }}'/>
+			{% endifnotequal %}
+		{% endfor %}
+		{% if user.is_authenticated %}
+			<a class='thumbnail' href='{% url album-photo-add photo.album.id %}'><img class='thumbnail' src='/shell/media/img/app/add.png'/></a>
+		{% endif %}
+	</div>
+</div>
+
+<div id='sidebar'>
+	<div id='comment'>
+		<h1 id='comment_title'>
+			{% if photoComment %}
+				Comment
+			{% else %}
+				No comment yet.
+			{% endif %}
+		</h1>
+		<ul>
+			{% for c in photoComment %}
+				{% if c.website %}
+					<li>
+						<div id='comment_author'>
+							<p><a href='{{ c.website }}' target='blank' > {{ c.name }}</a> said</p>
+							<p>{{ c.date_create|timesince }} ago</p>
+						</div>
+						<div id='comment_content'>
+							<p>{{ c.content }}</p>
+						</div>
+					</li>
+				{% else %}
+					<li>
+						<div id='comment_author'>
+							<p>{{ c.name }} said</p>
+							<p>{{ c.date_create|timesince }} ago</p>
+						</div>
+						<div id='comment_content'>
+							<p>{{ c.content }}</p>
+						</div>
+					</li>
+				{% endif %}
+			{% endfor %}
+		</ul>
+		<div class='clear'></div>
+		<div id='comment_form'>
+			<form id='commentform' method='post' action='{% url photo photo.id %}'>
+				<table border='0'>
+					<tr><td></td>
+						<td><p>Do you wanna say something?</p></td>
+					</tr>
+					
+					{% for f in form %}
+					<tr><td class='align_right'>{{ f.label_tag }}</td>
+						<td>{{ f }}{% if f.errors %} {{ f.errors }} {% endif %}</td>
+					</tr>
+					{% endfor %}
+					
+					<tr><td></td>
+						<td><input type='submit' class='button' value='Put it' /></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</div>
+
+	<div id='exif'>
+		<table border='0'>
+			<tr><td id='exif_title'>EXIF</td><td></td></tr>
+			<tr><td class='align_right'>Photo No:</td><td>{{ photo.id}}</td></tr>
+			<tr><td class='align_right'>Manufacturer: </td><td>{{ photo.manufacturer }}</td></tr>
+			<tr><td class='align_right'>Model: </td><td>{{ photo.model }}</td></tr>
+			<tr><td class='align_right'>Date: </td><td>{{ photo.date_time }}</td></tr>
+			<tr><td class='align_right'>Exposure time: </td><td>{{ photo.exposure_time }}</td></tr>
+			<tr><td class='align_right'>Apeture: </td><td>{{ photo.apeture }}</td></tr>
+			<tr><td class='align_right'>Focal length: </td><td>{{ photo.focal_length }}</td></tr>
+			<tr><td class='align_right'>ISO: </td><td>{{ photo.iso }}</td></tr>
+			<tr><td class='align_right'>Hold: </td><td>{{ photo.get_hold_display }}</td></tr>
+		</table>
+	</div>
+	<div class='clear'></div>
+</div>
+
+{% endblock %}

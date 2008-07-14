@@ -1,0 +1,57 @@
+{% extends "base.django.html" %}
+{% block head_title %}Album Edit{% endblock %}
+
+{% block body_content %}
+<div id='album_title'>
+	<h1>Album Edit</h1>
+</div>
+
+<div id='album_edit'>
+	<form id='albumform' method='post' action='{% url album-edit-save album.id %}' />
+		<table border='0'>
+			{% for f in form %}
+			<tr><td class='align_right'>{{ f.label_tag }}</td>
+				<td>{{ f }} {% if f.errors %} {{ f.errors }} {% endif %}</td>
+				<td></td>
+			</tr>
+			{% endfor %}
+			
+			<tr><td></td>
+				<td><input type='submit' class='button' name='Add' value='Add' />
+					<input type='submit' class='button' name='cancel' value='Cancel'/>
+				</td>
+			</tr>
+		</table>
+	</form>
+</div>
+
+<div id='album'>
+	<img id='album_cover' src='
+		{% if album.cover.get_image_thumbnail_url %}
+			{{ album.cover.get_image_thumbnail_url }}
+		{% else %}
+			/shell/media/img/app/default_album_cover.jpg
+		{% endif %}
+	'/>
+	<p id='album_title'>{{ album.title }}</p>
+	<p id='album_description'>{{ album.description }}</p>
+	{% if user.is_authenticated %}
+		<a href='{% url album-delete album.id %}'>Delete</a>
+	{% endif %}
+	<div class='clear'></div>
+</div>
+
+<div id='album_photo'>
+	{% for p in album.photos.all %}
+		{% ifnotequal p.id photo.id %}
+			<a class='thumbnail' href='{{ p.get_absolute_url }}'><img class='thumbnail' src='{{ p.get_image_thumbnail_url }}'/></a> 
+		{% else %}
+			<img class='currentphoto' src='{{ p.get_image_thumbnail_url }}'/>
+		{% endifnotequal %}
+	{% endfor %}
+	{% if user.is_authenticated %}
+		<a class='thumbnail' href='{% url album-photo-add album.id %}'><img class='thumbnail' src='/shell/media/img/app/add.png'/></a>
+	{% endif %}
+</div>
+
+{% endblock %}

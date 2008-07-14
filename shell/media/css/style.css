@@ -1,0 +1,584 @@
+/*--reset------------------------------------------------------*/
+* { padding:0; margin:0;
+	line-height: normal;
+	/*border:1px dotted #454545*/
+}
+a img,:link img,:visited img,fieldset { border:0;}
+li { margin:0;}
+
+/*--general------------------------------------------------------*/
+body {
+	font-size: 12px;
+	font-family: Verdana, arial, sans, heiVerdana;
+	color: #AAA;
+	/*color: #FFF;*/
+	background-color: #000;
+}
+a {
+	color: #EEE;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: none;
+	color: red;
+}
+
+#container {
+	width: 850px;
+	margin-right: auto;
+	margin-left: auto;
+}
+div.clear {
+	clear: both;	
+}
+
+/*--header------------------------------------------------------*/
+div#header {
+	clear: both;
+	float: left;
+	/*width: 100%;*/
+	/*background-color: #222;*/
+	/*margin-bottom: 5px;*/
+	/*padding: 3px 0px;*/
+	/*border-top: 1px solid #222;*/
+	/*border-right: 1px solid #222;*/
+	/*border-bottom: 0px solid #222;*/
+	/*border-left: 1px solid #222;*/
+	/*margin: 0px auto;*/
+	/*background-color: #000;*/
+	margin: 10px 0px;
+}
+div#header h1 {
+	/*float: left;*/
+	display: inline;
+	color: red;
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 1em;
+	/*padding-left: 5px;*/
+	/*padding: 5px 5px 5px 5px;*/
+	/*margin: 5px 0 5px 0;*/
+}
+div#header div#nav {
+	display: inline;
+	/*float: right;*/
+	font-size: 12px;
+	font-weight: bold;
+	/*line-height: normal;*/
+	/*margin: 15px 10px 10px 10px;*/
+}
+div#header div#nav a {
+	/*background-color: #111;*/
+	margin: 0px 4px;
+}
+div#header div#nav a:hover {
+	/*background-color: #000;*/
+	/*border: 1px solid #222;*/
+}
+
+/*--account------------------------------------------------------*/
+
+/*--header------------------------------------------------------*/
+/*--ing_form------------------------------------------------------*/
+#ing_form {
+	/*float: left;*/
+	margin: 15px 0 0 0;
+}
+#ing_form input.button {
+	cursor: pointer;
+	/*margin: 4px;*/
+	padding: 0px 1px;
+	text-align: center;
+	font-family: Verdana, arial, helvetica, sans-serif;
+	font-size: 11px;
+	/*letter-spacing: -1px;*/
+	/*background-color: #1E68DE;  The blue is amazing. */
+	background-color: #1A1A1A;
+	color: #FFF;
+	border-top: 1px solid #454545;
+	border-left: 1px solid #454545;
+	border-right: 1px solid #232323;
+	border-bottom: 1px solid #232323;
+}
+#ing_form input.inputtext {
+	background-color: #232323;
+	color: #FFF;
+	margin: 0;
+	padding: 1px;
+	border: 1px solid #454545;
+}
+
+/*--content------------------------------------------------------*/
+div#content {
+	clear: both;
+	margin: 10px 0px;
+}
+div#photo{
+	clear: both;
+	/*width: 100%;*/
+	background-color: #050505;
+	text-align: center;
+	padding: 20px 15px;
+	border: 1px solid #202020;
+	margin: 5px 0px 0px 0px;
+}
+div#photo table{
+	color: #000;
+	background-color: #FFF;
+	text-align: left;
+	padding: 5px 7px;
+	margin: 0px auto;
+	/*float: left;*/
+	width: 500px;
+	/*border: 1px dotted #454545;*/
+}
+div#photo h1#photo_caption{
+	font-size: 12px;
+}
+div#photo img#photo {
+	padding: 0px;
+	border: 1px solid #FFF;
+}
+div#photo p#photo_description {
+	font-size: 11px;
+	line-height: normal;
+}
+div#photonav{
+	color: #8F8F8F;
+	margin: 10px 0px 0px 0px;
+}
+/*div#photonav a{*/
+/*	margin: 10px 0px 0px 0px;*/
+/*}*/
+/*--------------------------------------------------------*/
+div#sidebar{
+	clear: both;
+	/*width: 100%;*/
+	background-color: #202020;
+	padding: 15px;
+	border: 1px solid #252525;
+	/*padding: 20px 0px;*/
+}
+div#sidebar div#comment {
+	float: left;
+	width: 570px;
+	/*clear: both;*/
+	/*border: 1px dotted #454545;*/
+}
+div#sidebar div#comment h1#comment_title {
+	color: #FFF;
+	font-size: 14px;
+	font-weight: bold;
+	margin-left: 5px;
+}
+div#sidebar div#comment ul{
+	/*border: 1px dotted #454545;*/
+	list-style: none;
+}
+div#sidebar div#comment ul li{
+	/*border: 1px dotted #454545;*/
+	clear: both;
+	margin: 15px 0px;	
+}
+div#sidebar div#comment ul li div#comment_author {
+	float: left;
+	width: 150px;
+	color: gray;
+	font-size: 11px;
+	text-align: right;
+	margin: 0px 10px 20px 0px;
+	/*padding: 10px;*/
+	/*border: 1px dotted #454545;*/
+}
+div#sidebar div#comment ul li div#comment_content  {
+	margin-left: 160px;
+	width: 390px;
+	/*float: right;*/
+	/*border-left: solid 1px red;*/
+	/*border: 1px dotted #454545;*/
+}
+div#sidebar div#comment ul li div#comment_content p {
+	line-height: normal;
+	/*float: right;*/
+	/*border-left: solid 1px red;*/
+	/*border: 1px dotted #454545;*/
+}
+/*--Comment form-------------------------------*/
+div#sidebar div#comment div#comment_form {
+	margin: 15px 0px 0px 10px;
+}
+/*--EXIF----------------------------*/
+div#sidebar div#exif{
+	/*float: right;*/
+	font-size: 11px;
+	padding: 0px 0px;
+	margin-left: 580px;
+	/*border: 1px dotted #454545;*/
+}
+div#sidebar div#exif table td#exif_title{
+	color: #FFF;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: right;
+	padding: 5px;
+	/*border: 1px dotted #454545;*/
+}
+div#sidebar div#exif table td.align_right{
+	color: gray;
+	text-align: right;
+	/*padding: 5px;*/
+	/*border: 1px dotted #454545;*/
+}
+
+
+div#photoall_title h1{
+	margin: 10px 10px 5px 10px;
+}
+div#photoall{
+	background-color: #050505;
+	/*width: 95%;*/
+	padding: 7px 11px;
+	border: 1px solid #151515;
+}
+div#photoall img{
+	margin: 3px 0px;
+}
+div#photoall .center{
+	text-align: center;
+}
+/*--Photo Album-------------------------------------------------*/
+div#photo_album {
+	clear: both;
+	/*width: 100%;*/
+	background-color: #101010;
+	padding: 3px 15px 8px 15px;
+	border: 1px solid #202020;
+	border-top: 0px;
+}
+p#album_title {
+	color: #FFF;
+	font-size: 14px;
+	font-weight: bold;
+	line-height: normal;
+	margin: 5px 1px;
+}
+p#album_description {
+	font-size: 11px;
+	font-weight: normal;
+	line-height: normal;
+	margin: 5px 0px;;
+}
+/*--Album-------------------------------------------------*/
+
+div#album_title h1{
+	margin: 10px 10px 5px 10px;
+}
+div#album{
+	clear: both;
+	background-color: #050505;
+	padding: 10px;
+	border: 1px solid #202020;
+	border-bottom: 0px solid #050505;
+}
+div#album img#album_cover{
+	float: left;
+	/*background-color: #000;*/
+	border: 1px solid #FFF;
+	padding: 1px;
+	margin: 0px 10px 0px 0px;	
+}
+div#album p#album_title {
+	color: #FFF;
+	font-size: 14px;
+	font-weight: bold;
+	line-height: normal;
+	margin: 0px 0px 5px 0px;
+}
+div#album p#album_description {
+	font-size: 11px;
+	font-weight: normal;
+	line-height: normal;
+	margin: 5px 0px;
+}
+div#album_photo{
+	background-color: #101010;
+	padding: 7px 10px;
+	border: 1px solid #202020;
+}
+
+/*--Album All-------------------------------------------------*/
+div#albumall_title h1{
+	margin: 10px 10px 5px 10px;
+}
+
+div#albumall {
+	background-color: #050505;
+	border: 1px solid #202020;
+}
+
+div#albumall ul li{
+	list-style: none;
+	padding: 10px;
+}
+div#albumall ul li.roweven{
+	background-color: #101010;
+	border-top: 1px solid #202020;
+	border-bottom: 1px solid #202020;
+}
+
+div#albumall img#album_cover{
+	float: left;
+	background-color: #000;
+	opacity: 0.9;
+	border: 1px solid #666;
+	padding: 1px;
+	margin: 0px 10px 0px 0px;	
+}
+
+div#albumall img#album_cover:hover {
+	background-color: #000;
+	opacity: 1;
+	padding: 1px;
+	border: 1px solid #FFF;
+}
+
+div#albumall p#album_title{
+	font-size: 14px;
+	font-weight: bold;
+	margin: 0px 0px 5px 0px;
+}
+div#albumall p#album_description{
+	font-size: 11px;
+	font-weight: normal;
+	line-height: normal;
+	/*margin: 5px 0px;*/
+	margin: 5px 0px 5px 90px;
+}
+div#albumall .center{
+	text-align: center;
+	margin: 7px 0px;
+}
+
+/*--Album class-------------------------------------------------*/
+.small {
+	color: grey;
+	font-size: 9px;
+	font-weight: normal;
+	/*margin: 5px;*/
+}
+
+a.thumbnail:link img.thumbnail, a.thumbnail:visited img.thumbnail {
+	background-color: #000;
+	opacity: 0.8;
+	border: 1px solid #666;
+	padding: 1px;
+	margin: 3px 0px;
+}
+a.thumbnail:hover img.thumbnail {
+	background-color: #000;
+	opacity: 1;
+	padding: 1px;
+	border: 1px solid #FFF;
+}
+img.currentphoto {
+	background-color: #000;
+	padding: 1px;
+	border: 1px solid #FFF;
+	margin: 3px 0px;
+}
+
+/*--form all & edit-------------------------------------------------*/
+div#album_add{
+	background-color: #101010;
+	padding: 5px 10px;
+	border: 1px solid #202020;
+}
+div#album_edit{
+	background-color: #101010;
+	padding: 5px 10px;
+	border: 1px solid #202020;
+	border-bottom: 0px solid #101010;
+}
+
+div#album_photo_add{
+	background-color: #050505;
+	padding: 10px 10px;
+	border: 1px solid #202020;
+	border-top: 0px solid #101010;
+}
+div#photo_add{
+	background-color: #101010;
+	padding: 10px 10px;
+	border: 1px solid #202020;
+}
+div#photo_add .center{
+	text-align: center;
+}
+
+div#photo_edit{
+	background-color: #101010;
+	padding: 5px 10px;
+	border: 1px solid #202020;
+	border-bottom: 0px solid #101010;
+}
+form#photoeditform{
+	float: left;
+	margin: 5px 0px;
+}
+div#photo_edit div#exif{
+	font-size: 11px;
+	margin-top: 15px;
+	margin-left: 540px;
+}
+div#photo_edit div#exif table td#exif_title{
+	color: #FFF;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: right;
+	padding: 5px;
+	/*border: 1px dotted #454545;*/
+}
+div#photo_edit div#exif table td.align_right{
+	color: gray;
+	text-align: right;
+	/*padding: 5px;*/
+	/*border: 1px dotted #454545;*/
+}
+div#photo_edit_album {
+	clear: both;
+	/*width: 100%;*/
+	background-color: #050505;
+	padding: 3px 15px 5px 15px;
+	border: 1px solid #202020;
+}
+
+/*--Album form-------------------------------------------------*/
+form#albumform{
+	margin: 10px 0px;
+}
+form#photoaddform{
+	margin: 10px 0px;
+}
+form#photouploadeditform ul{
+	display: inline;
+	list-style: none;
+}
+form#photouploadeditform ul li{
+	display: inline;
+}
+input, textarea{
+	background-color: #050505;
+	color: #FFF;
+	font-size: 12px;
+	padding: 1px;
+	border: 1px solid #454545;
+	margin: 2px 0px;
+}
+input:focus, textarea:focus {
+	border: 1px solid #FFF;
+}
+input.button {
+	cursor: pointer;
+	/*margin: 4px;*/
+	padding: 0px 1px;
+	text-align: center;
+	font-family: Verdana, arial, helvetica, sans-serif;
+	font-size: 11px;
+	/*letter-spacing: -1px;*/
+	/*background-color: #1E68DE;  The blue is amazing. */
+	background-color: #1A1A1A;
+	color: #FFF;
+	border-top: 1px solid #454545;
+	border-left: 1px solid #454545;
+	border-right: 1px solid #232323;
+	border-bottom: 1px solid #232323;
+	margin-top: 2px;
+}
+input.button:hover {
+	background-color: #2A2A2A;
+}
+form table td.align_right{
+	color: gray;
+	font-size:12px;
+	text-align: right;
+	vertical-align: text-top;
+	padding: 3px 5px 0px 0px;
+}
+ul.errorlist{
+	display: inline;
+}
+ul.errorlist li{
+	display: inline;
+	color: grey;
+	font-size:11px;
+	padding: 0px;
+	margin: 0px;
+}
+  
+
+/*--pagination------------------------------------------------------*/
+div#paginator {
+	clear: both;
+	font-size: 11px;
+	margin: 7px 0px;
+	/*color: #CCC;*/
+}
+div#paginator .currentpage {
+	color: #FFF;
+	/*font-weight: bold;*/
+	background-color: #000;
+	border: 1px solid #FFF;
+	padding: 0px 3px;
+}
+div#paginator a {
+	text-decoration: none;
+	color: #DDD;
+	background-color: #000;
+	border: 1px solid #404040;
+	padding: 0px 3px;
+}
+div#paginator a:hover {
+	text-decoration: none;
+	color: #FFF;
+	border: 1px solid #FFF;
+	/*padding: 1px 3px;*/
+}
+/*--about------------------------------------------------------*/
+div#about_title h1{
+	margin: 10px 10px 5px 10px;
+}
+div#about h1{
+	color: #FFF;
+	font-size: 18px;
+	margin: 10px;
+}
+div#about h2{
+	color: #FFF;
+	font-size: 14px;
+	margin: 0px 10px;
+}
+div#about p{
+	margin: 0px 10px;
+}
+/*--footer------------------------------------------------------*/
+div#footer {
+	clear: both;
+	color: #8F8F8F;
+	font-size: 11px;
+	margin: 15px 0px;
+}
+div#footer * {
+	line-height: 1em;
+}
+div#footer img {
+	float: left;
+	margin: 0px 10px 5px 0px;
+}
+
+div#footer p {
+	margin: 2px 0px;
+}
+
+#footer img.feedicon {
+	float: right;
+}

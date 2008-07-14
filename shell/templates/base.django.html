@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>
+		Titan Lab - Photography: {% block head_title %}{% endblock %}
+	</title>
+	
+	{% block head_meta %}
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+	{% endblock %}
+	
+	{% block head_link %}
+		<link href="/shell/media/css/style.css " type="text/css" rel="stylesheet" />
+		<link rel="shortcut icon" href="/shell/media/img/app/favicon.ico" >
+		<link rel="alternate" type="application/rss+xml" title="Hu, Zhenghui's ppCat.Shell - RSS" href="feeds/latest/" />
+	{% endblock %}
+
+	{% block head_script %}
+	{% endblock %}
+</head>
+
+<body>
+	<div id='container'>
+		{% block body_header %}
+			<div id='header'>
+				<h1>Titan Lab - Photography</h1>
+				<div id='nav'>
+				<a href='/shell'>Home</a>
+				<a href='/shell/photoall/'>Photo</a>
+				<a href='/shell/albumall/'>Album</a>
+				<a href='/shell/about/'>About</a>
+				</div>
+			</div>
+		{% endblock %}
+		
+		
+	<div id='content'>
+		{% block body_content %}
+		{% endblock %}
+	</div>
+		
+		{% block body_footer %}
+			<div id='footer'>
+				<img src='/shell/media/img/app/djangopowered.gif' />
+				<p>Project <a href='/shell/about/' target="_blank">ppCat.Shell</a>, powered by <a href='http://www.djangoproject.com' target='_blank'>Django</a> & designed by <a href='http://www.titanlab.net/' target="_blank">Hu, Zhenghui</a>.</p>
+				<p> 
+					{% if user.is_authenticated %}
+						{{ user.username }} <a href='{% url logout %}'>Logout</a>
+					{% else %}
+						Admin: <a href='{% url login request.get_full_path %}'>Login</a>
+					{% endif %}
+				</p>
+			</div>
+		{% endblock %}
+	</div>
+</body>
+</html>

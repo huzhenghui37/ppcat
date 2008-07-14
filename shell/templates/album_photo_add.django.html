@@ -1,0 +1,55 @@
+{% extends "base.django.html" %}
+
+{% block head_title %}Photo Add & Upload{% endblock %}
+
+{% block body_content %}
+
+<div id='album_title'>
+	<h1>Photo Add & Upload</h1>
+</div>
+
+<div id='album'>
+	<img id='album_cover' src='
+		{% if album.cover.get_image_thumbnail_url %}
+			{{ album.cover.get_image_thumbnail_url }}
+		{% else %}
+			/shell/media/img/app/default_album_cover.jpg
+		{% endif %}
+	'/>
+	<p id='album_title'>{{ album.title }}</p>
+	<p id='album_description'>{{ album.description }}</p>
+	<div class='clear'></div>
+</div>
+
+<div id='album_photo'>
+	{% for p in album.photos.all %}
+		{% ifnotequal p.id photo.id %}
+			<a class='thumbnail' href='{{ p.get_absolute_url }}'><img class='thumbnail' src='{{ p.get_image_thumbnail_url }}'/></a> 
+		{% else %}
+			<img class='currentphoto' src='{{ p.get_image_thumbnail_url }}'/>
+		{% endifnotequal %}
+	{% endfor %}
+</div>
+
+<div id='album_photo_add'>
+	<form id='photouploadform' enctype='multipart/form-data' method='post' action='{% url photo-upload-edit %}' />
+		<table border='0'>
+			{% for f in form %}
+			<tr><td class='align_right'>{{ f.label_tag }}</td>
+				<td>{{ f }} {% if f.errors %} {{ f.errors }} {% endif %}</td>
+				<td></td>
+			</tr>
+			{% endfor %}
+			
+			<tr><td></td>
+				<td><input type='submit' class='button' name='Upload' value='Upload' />
+					<input type='submit' class='button' name='cancel' value='Cancel'/>
+					<input type='hidden' name='albumid' value='{{ album.id }}' />
+				</td>
+			</tr>
+		</table>
+	</form>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends "base.django.html" %}
+
+{% block head_title %}
+	ppCat.Shell Photo Upload
+{% endblock %}
+
+{% block body_content %}
+	<!--<p>{{ imageName }}</p>-->
+	
+<div id='photo_upload_edit'>
+	<form id='photouploadeditform' enctype='multipart/form-data' method='post' action='{% url photo-upload-save photo.id %}' />
+		<table border='0'>
+			<tr><td class='align_right'><img src='{{ photo.get_image_thumbnail_url }}' /></td><td></td>
+			</tr>
+		
+			<tr><td class='align_right'>Photo No.</td><td>{{ photo.id }}</td>
+			</tr>
+		
+			{% for f in form %}
+			<tr><td class='align_right'>{{ f.label_tag }}</td>
+				<td>{{ f }} {% if f.errors %} {{ f.errors }} {% endif %}</td>
+				<td></td>
+			</tr>
+			{% endfor %}
+			
+			<tr><td></td>
+				<td><input type='submit' class='button' name='info_submit' value='Save' />
+					<input type='submit' class='button' name='cancel' value='Cancel'/>
+					<input type='hidden' name='albumid' value='{{ photo.album.id }}' />
+				</td>
+			</tr>
+		</table>
+	</form>
+</div>
+		<!--Caption: <input type="text" class="text" name="caption" value='{{ photo.caption }}' size="30" maxlength="30" /> <br/>-->
+		<!--Description: <textarea class="text" name="description" rows="5" cols="30" maxlength="200" />{{ photo.description }}</textarea> <br/>-->
+		<!--<input type="radio" name="hold" value="h"> Handheld <input type="radio" name="hold" value="t"> Tripod <br/>-->
+		<!--<input type='checkbox' class='text' name='asAlbumCover' value='yes' /> Used as the album cover. <br/>-->
+
+<!--<div id='exif_info'>   -->
+<!--	{% for key, value in tags.items %}-->
+<!--		<ul>-->
+<!--			<li> {{ key }} : {{ value }} </li>-->
+<!--		</ul>-->
+<!--	{% endfor %}-->
+<!--</div>-->
+{% endblock %}

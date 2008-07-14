@@ -1,0 +1,33 @@
+{% extends "base.django.html" %}
+
+{% block head_title %}Index{% endblock %}
+
+
+{% block body_content %}
+<div id='photo'>
+	{% if photo %}
+		<table border='0'>
+			<tr><td><a href='{{ photo.get_absolute_url }}'><img id='photo' src='{{ photo.get_image_url }}'/></a></td></tr>
+			<tr><td><h1 id='photo_caption'>{{ photo.caption }}</h1><p id='photo_description'>{{ photo.description }}</p></td></tr>
+		</table>
+		<div id='photonav'>
+			{% if currentPage.has_previous %}
+				<a href='{% url index-page currentPage.previous_page_number %}'>Previous</a>
+			{% else %}
+				Previous
+			{% endif %}
+			
+			| <a href='{% url random %}'>Random</a> |
+			
+			{% if currentPage.has_next %}
+				<a href='{% url index-page currentPage.next_page_number %}'>Next</a>
+			{% else %}
+				Next
+			{% endif %}
+		</div>
+	{% else %}
+		<p>There is no photo yet, do you wanna <a href='{% url photo-add %}'>upload</a> the first one?</p>
+	{% endif %}
+</div>
+
+{% endblock %}

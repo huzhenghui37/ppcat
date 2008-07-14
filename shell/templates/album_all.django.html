@@ -1,0 +1,46 @@
+{% extends "base.django.html" %}
+{% block head_title %}Album All{% endblock %}
+
+{% block body_content %}
+<div id='albumall_title'>
+	<h1>All Album</h1>
+</div>
+
+<div id='albumall'>
+	{% if currentPage %}
+		<ul>
+			{% for a in currentPage.object_list %}
+				<li class='{% cycle 'oddeven' 'roweven' %}'>
+				<a class='thumbnail' href='{{ a.get_absolute_url }}'><img id='album_cover' src='
+					{% if a.cover.get_image_thumbnail_url %}
+						{{ a.cover.get_image_thumbnail_url }}
+					{% else %}
+						/shell/media/img/app/default_album_cover.jpg
+					{% endif %}
+				'/></a>
+				<a href='{{ a.get_absolute_url }}'><p id='album_title'>{{ a.title }}</p></a>
+				<p id='album_description'>{{ a.description }}</p>
+				<div class='clear'></div>
+				</li>
+			{% endfor %}
+		
+			{% if user.is_authenticated %}
+				<li><a class='thumbnail' href='{% url album-add %}'><img class='thumbnail' src='/shell/media/img/app/add.png'/></a></li>
+			{% endif %}
+		</ul>
+	{% else %}
+		<p class='center'>There is no album yet, do you wanna <a href='{% url album-add %}'>add</a> the first one?</p>
+	{% endif %}
+</div>
+
+<div id='paginator'>
+	{% for p in pageRange %}
+		{% ifequal p currentPageNum %}
+			<span class='currentpage'>{{ p }}</span>
+		{% else %}
+			<a href='{% url albumall-page p %}'>{{ p }}</a>
+		{% endifequal %}
+	{% endfor %}
+</div>
+
+{% endblock %}

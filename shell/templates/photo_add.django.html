@@ -1,0 +1,33 @@
+{% extends "base.django.html" %}
+
+{% block head_title %}Photo Add & Upload{% endblock %}
+
+{% block body_content %}
+
+<div id='album_title'>
+	<h1>Photo Add & Upload</h1>
+</div>
+
+<div id='photo_add'>
+	{% if albumCount %}
+			<form id='photouploadform' enctype='multipart/form-data' method='post' action='{% url photo-upload-edit %}' />
+				<table border='0'>
+					{% for f in form %}
+					<tr><td class='align_right'>{{ f.label_tag }}</td>
+						<td>{{ f }} {% if f.errors %} {{ f.errors }} {% endif %}</td>
+						<td></td>
+					</tr>
+					{% endfor %}
+					
+					<tr><td></td>
+						<td><input type='submit' class='button' name='Upload' value='Upload' />
+							<input type='submit' class='button' name='cancel' value='Cancel'/>
+						</td>
+					</tr>
+				</table>
+			</form>
+	{% else %}
+		<p class='center'>There is even no album yet, please <a href='{% url album-add %}'>create</a> one first then add photo into it.</p>
+	{% endif %}
+</div>
+{% endblock %}

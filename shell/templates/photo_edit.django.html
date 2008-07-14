@@ -1,0 +1,88 @@
+{% extends "base.django.html" %}
+
+{% block head_title %}
+	ppCat.Shell Photo Upload
+{% endblock %}
+
+{% block body_content %}
+	<!--<p>{{ imageName }}</p>-->
+	
+<div id='photo_edit'>
+	<form id='photoeditform' method='post' action='{% url photo-save photo.id %}' />
+		<table border='0'>
+			<tr><td class='align_right'></td>
+				<td><img class='currentphoto' src='{{ photo.get_image_thumbnail_url }}' />
+				</td>
+			</tr>
+		
+			<tr><td class='align_right'>Photo No.</td>
+				<td>{{ photo.id }}</td>
+			</tr>
+		
+			{% for f in form %}
+			<tr><td class='align_right'>{{ f.label_tag }}</td>
+				<td>{{ f }} {% if f.errors %} {{ f.errors }} {% endif %}</td>
+				<td></td>
+			</tr>
+			{% endfor %}
+			
+			<tr><td></td>
+				<td><input type='submit' class='button' name='info_submit' value='Save' />
+					<input type='submit' class='button' name='cancel' value='Cancel'/>
+					<input type='hidden' name='albumid' value='{{ photo.album.id }}' />
+				</td>
+			</tr>
+		</table>
+	</form>
+
+	<div id='exif'>
+		<table border='0'>
+			<tr><td id='exif_title'>EXIF</td><td></td></tr>
+			<tr><td class='align_right'>Photo No:</td><td>{{ photo.id}}</td></tr>
+			<tr><td class='align_right'>Manufacturer: </td><td>{{ photo.manufacturer }}</td></tr>
+			<tr><td class='align_right'>Model: </td><td>{{ photo.model }}</td></tr>
+			<tr><td class='align_right'>Date: </td><td>{{ photo.date_time }}</td></tr>
+			<tr><td class='align_right'>Exposure time: </td><td>{{ photo.exposure_time }}</td></tr>
+			<tr><td class='align_right'>Apeture: </td><td>{{ photo.apeture }}</td></tr>
+			<tr><td class='align_right'>Focal length: </td><td>{{ photo.focal_length }}</td></tr>
+			<tr><td class='align_right'>ISO: </td><td>{{ photo.iso }}</td></tr>
+			<tr><td class='align_right'>Hold: </td><td>{{ photo.get_hold_display }}</td></tr>
+		</table>
+	</div>
+	<div class='clear'></div>
+	
+
+</div>
+
+<div id='photo_edit_album'>
+	<a href='{{ photo.album.get_absolute_url }}'><p id='album_title'>{{ photo.album.title }}</a> <span class='small'>Album created {{ photo.album.date_create|timesince }} ago.</span></p>
+	<p id='album_description'>{{ photo.album.description }}</p>
+	<div id='album_thumbnail'>
+		{% for p in photo.album.photos.all %}
+			{% ifnotequal p.id photo.id %}
+				<a class='thumbnail' href='{% url photo-edit p.id %}'><img class='thumbnail' src='{{ p.get_image_thumbnail_url }}'/></a> 
+			{% else %}
+				<img class='currentphoto' src='{{ p.get_image_thumbnail_url }}'/>
+			{% endifnotequal %}
+		{% endfor %}
+		{% if user.is_authenticated %}
+			<a class='thumbnail' href='{% url album-photo-add photo.album.id %}'><img class='thumbnail' src='/shell/media/img/app/add.png'/></a>
+		{% endif %}
+	</div>
+</div>
+
+
+
+		<!--Caption: <input type="text" class="text" name="caption" value='{{ photo.caption }}' size="30" maxlength="30" /> <br/>-->
+		<!--Description: <textarea class="text" name="description" rows="5" cols="30" maxlength="200" />{{ photo.description }}</textarea> <br/>-->
+		<!--<input type="radio" name="hold" value="h"> Handheld <input type="radio" name="hold" value="t"> Tripod <br/>-->
+		<!--<input type='checkbox' class='text' name='asAlbumCover' value='yes' /> Used as the album cover. <br/>-->
+
+<!--<div id='exif_info'>   -->
+<!--	{% for key, value in tags.items %}-->
+<!--		<ul>-->
+<!--			<li> {{ key }} : {{ value }} </li>-->
+<!--		</ul>-->
+<!--	{% endfor %}-->
+<!--</div>-->
+{% endblock %}
